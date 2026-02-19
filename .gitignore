@@ -1,0 +1,27 @@
+# Environment
+.env
+
+# Minecraft runtime data
+data/**
+backups/**
+logs/**
+
+# Keep folder structure in git
+!data/.gitkeep
+!backups/.gitkeep
+!logs/.gitkeep
+
+# User-provided binary content
+mods/**/*.jar
+plugin/**/*.jar
+plugin/packs-source/**/*.zip
+
+# Keep template structure
+!mods/.gitkeep
+!plugin/.gitkeep
+!plugin/config/.gitkeep
+!plugin/packs-source/.gitkeep
+
+# OS/editor
+.DS_Store
+Thumbs.db
