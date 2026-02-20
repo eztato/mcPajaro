@@ -13,8 +13,7 @@ logs/**
 
 # User-provided binary content
 mods/**/*.jar
-plugin/**/*.jar
-plugin/packs-source/**/*.zip
+mods/.sync-report.json
 
 # Keep template structure
 !mods/.gitkeep

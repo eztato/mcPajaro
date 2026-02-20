@@ -1,9 +1,27 @@
 services:
+  mc-mods-sync:
+    image: python:3.12-slim
+    container_name: mc-evolution-mods-sync
+    restart: "no"
+    environment:
+      MC_VERSION: "${MC_VERSION:-1.20.1}"
+      MOD_LOADER: "forge"
+      CF_API_KEY: "${CF_API_KEY:-}"
+      MODS_SYNC_STRICT: "${MODS_SYNC_STRICT:-false}"
+      MODS_DIR: "/mods"
+    command: ["python", "/work/scripts/sync_server_mods.py"]
+    volumes:
+      - ./mods:/mods
+      - ./scripts:/work/scripts:ro
+
   mc-evolution:
     image: itzg/minecraft-server:java21
-    container_name: mc-evolution-16gb
+    container_name: mc-evolution-12gb
     restart: unless-stopped
     stop_grace_period: 1m30s
+    depends_on:
+      mc-mods-sync:
+        condition: service_completed_successfully
 
     ports:
       - "25565:25565"
@@ -14,17 +32,17 @@ services:
       ARCLIGHT_TYPE: "${ARCLIGHT_TYPE:-FORGE}"
       VERSION: "${MC_VERSION:-1.20.1}"
 
-      INIT_MEMORY: "${MC_INIT_MEMORY:-8G}"
-      MAX_MEMORY: "${MC_MAX_MEMORY:-12G}"
+      INIT_MEMORY: "${MC_INIT_MEMORY:-4G}"
+      MAX_MEMORY: "${MC_MAX_MEMORY:-9G}"
       TZ: "${SERVER_TZ:-America/Lima}"
 
       USE_MEOWICE_FLAGS: "true"
 
-      VIEW_DISTANCE: "8"
-      SIMULATION_DISTANCE: "6"
-      MAX_PLAYERS: "${MC_MAX_PLAYERS:-20}"
+      VIEW_DISTANCE: "7"
+      SIMULATION_DISTANCE: "5"
+      MAX_PLAYERS: "${MC_MAX_PLAYERS:-12}"
       SYNC_CHUNK_WRITES: "false"
-      NETWORK_COMPRESSION_THRESHOLD: "256"
+      NETWORK_COMPRESSION_THRESHOLD: "512"
       ENABLE_COMMAND_BLOCK: "false"
 
       ENABLE_RCON: "true"
