@@ -117,8 +117,12 @@ cat mods/.sync-report.json
 - `MC_MAX_MEMORY=9G`
 - `MC_MAX_PLAYERS=12`
 - `MC_MOTD=BugCraft`
+- `ONLINE_MODE=FALSE`
+- `ENFORCE_SECURE_PROFILE=FALSE`
 - `VIEW_DISTANCE=7`
 - `SIMULATION_DISTANCE=5`
+
+Con `ONLINE_MODE=FALSE` el servidor acepta jugadores sin cuenta premium. En este modo no hay autenticacion oficial de Mojang y cualquier usuario puede usar cualquier nickname.
 
 ## Perfil local liviano
 
