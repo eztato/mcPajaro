@@ -39,7 +39,7 @@ Este proyecto esta fijado en `Minecraft 1.20.1` con `ARCLIGHT_TYPE=FORGE`.
 - Estado detallado: `docs/MODS_SERVER_MANIFEST.md`
 - Formato maquina: `docs/mods-manifest.json`
 
-Al ejecutar `docker compose up`, el servicio `mc-mods-sync` descarga mods y dependencias a `mods/` antes de iniciar `mc-evolution`.
+Al ejecutar `docker compose up`, el servicio `mc-mods-sync` descarga mods y dependencias a `mods/` antes de iniciar `bugcraft`.
 
 Variables utiles en `.env`:
 

@@ -1,5 +1,5 @@
 services:
-  mc-evolution:
+  bugcraft:
     environment:
       INIT_MEMORY: "2G"
       MAX_MEMORY: "4G"

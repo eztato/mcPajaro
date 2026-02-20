@@ -1,7 +1,7 @@
 services:
   mc-mods-sync:
     image: python:3.12-slim
-    container_name: mc-evolution-mods-sync
+    container_name: bugcraft-mods-sync
     restart: "no"
     environment:
       MC_VERSION: "${MC_VERSION:-1.20.1}"
@@ -14,9 +14,9 @@ services:
       - ./mods:/mods
       - ./scripts:/work/scripts:ro
 
-  mc-evolution:
+  bugcraft:
     image: itzg/minecraft-server:java21
-    container_name: mc-evolution-12gb
+    container_name: bugcraft-12gb
     restart: unless-stopped
     stop_grace_period: 1m30s
     depends_on:
@@ -31,6 +31,7 @@ services:
       TYPE: "ARCLIGHT"
       ARCLIGHT_TYPE: "${ARCLIGHT_TYPE:-FORGE}"
       VERSION: "${MC_VERSION:-1.20.1}"
+      MOTD: "${MC_MOTD:-BugCraft}"
 
       INIT_MEMORY: "${MC_INIT_MEMORY:-4G}"
       MAX_MEMORY: "${MC_MAX_MEMORY:-9G}"
@@ -97,12 +98,12 @@ services:
 
   mc-backup:
     image: "${MC_BACKUP_IMAGE:-itzg/mc-backup:2026.2.0@sha256:ba5cf40c25973aad937bece38747e05ef99215a15a5aecf55a4ed9e8aa5e2668}"
-    container_name: mc-evolution-backup
+    container_name: bugcraft-backup
     restart: unless-stopped
     depends_on:
-      - mc-evolution
+      - bugcraft
     environment:
-      RCON_HOST: "mc-evolution"
+      RCON_HOST: "bugcraft"
       RCON_PORT: "25575"
       RCON_PASSWORD: "${RCON_PASSWORD:?Set RCON_PASSWORD in .env}"
       INITIAL_DELAY: "2m"

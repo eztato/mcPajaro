@@ -34,7 +34,7 @@ Edita `RCON_PASSWORD` en `.env` y levanta:
 
 ```bash
 docker compose up -d
-docker logs -f mc-evolution-12gb
+docker logs -f bugcraft-12gb
 ```
 
 El flujo ahora incluye una etapa automatica previa (`mc-mods-sync`) que descarga mods de servidor en `mods/` antes de iniciar Minecraft.
@@ -55,7 +55,7 @@ Si tu `CF_API_KEY` contiene `$`, escapala en `.env` como `$$` para evitar interp
 Cuando ejecutas `docker compose up -d`:
 
 1. Arranca `mc-mods-sync` y sincroniza mods/dependencias en `mods/`.
-2. Si la sincronizacion termina bien, inicia `mc-evolution`.
+2. Si la sincronizacion termina bien, inicia `bugcraft`.
 3. Puedes revisar el resultado en `mods/.sync-report.json`.
 
 ## Comandos utiles
@@ -81,7 +81,7 @@ docker compose logs -f mc-mods-sync
 Ver logs del server:
 
 ```bash
-docker logs -f mc-evolution-12gb
+docker logs -f bugcraft-12gb
 ```
 
 Ver estado de contenedores:
@@ -93,7 +93,7 @@ docker compose ps
 Reiniciar solo Minecraft:
 
 ```bash
-docker compose restart mc-evolution
+docker compose restart bugcraft
 ```
 
 Ver reporte de sincronizacion de mods:
@@ -113,6 +113,7 @@ cat mods/.sync-report.json
 - `MC_INIT_MEMORY=4G`
 - `MC_MAX_MEMORY=9G`
 - `MC_MAX_PLAYERS=12`
+- `MC_MOTD=BugCraft`
 - `VIEW_DISTANCE=7`
 - `SIMULATION_DISTANCE=5`
 
