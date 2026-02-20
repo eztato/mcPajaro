@@ -49,6 +49,7 @@ Si tu `CF_API_KEY` contiene `$`, escapala en `.env` como `$$` para evitar interp
 - Puerto `25565` libre en el host.
 - `.env` creado y con `RCON_PASSWORD` definido.
 - `CF_API_KEY` definido si quieres usar API de CurseForge (si contiene `$`, escaparlo como `$$`).
+- `ARCLIGHT_RELEASE=Trials/1.0.6` para fijar el release compatible de Arclight 1.20.1.
 
 ## Flujo automatico de arranque
 
@@ -107,6 +108,8 @@ cat mods/.sync-report.json
 - Si falta algun mod, corre `docker compose run --rm mc-mods-sync` y revisa `mods/.sync-report.json`.
 - Si quieres que el arranque falle cuando falte un mod, usa `MODS_SYNC_STRICT=true` en `.env`.
 - Estado actual conocido para `1.20.1 Forge`: `Infernal Expansion` puede quedar pendiente por falta de build compatible.
+- Si ves `The "..." variable is not set`, revisa `CF_API_KEY` y escapa cada `$` como `$$` en `.env`.
+- Si falla Arclight con `Failed to locate Arclight jar`, confirma `ARCLIGHT_RELEASE=Trials/1.0.6`.
 
 ## Perfil recomendado (host 12 GB RAM total)
 
