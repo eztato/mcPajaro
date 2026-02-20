@@ -45,6 +45,7 @@ Variables utiles en `.env`:
 
 - `CF_API_KEY`: token para API de CurseForge (opcional, con fallback automatico).
 - `MODS_SYNC_STRICT`: si `true`, falla el arranque si falta algun mod.
+- `WHITELIST`: lista de nicks permitidos para bloquear bots/accesos no deseados.
 
 Incluye solo mods de lado `Ambos` (server), mas dependencias requeridas detectadas.
 

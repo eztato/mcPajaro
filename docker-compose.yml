@@ -48,6 +48,9 @@ services:
       ENABLE_COMMAND_BLOCK: "false"
       ONLINE_MODE: "${ONLINE_MODE:-FALSE}"
       ENFORCE_SECURE_PROFILE: "${ENFORCE_SECURE_PROFILE:-FALSE}"
+      WHITELIST: "${WHITELIST:-}"
+      EXISTING_WHITELIST_FILE: "${EXISTING_WHITELIST_FILE:-SYNCHRONIZE}"
+      MAX_TICK_TIME: "${MAX_TICK_TIME:--1}"
 
       ENABLE_RCON: "true"
       RCON_PASSWORD: "${RCON_PASSWORD:?Set RCON_PASSWORD in .env}"
@@ -60,25 +63,6 @@ services:
 
       # ProtocolLib, PlaceholderAPI, LuckPerms, TAB, Chunky
       SPIGET_RESOURCES: "1997,6245,28140,57806,81534"
-
-      RCON_CMDS_STARTUP: |-
-        chunky world world
-        chunky shape circle
-        chunky center 0 0
-        chunky radius ${CHUNKY_RADIUS_OVERWORLD:-40000}
-        chunky start
-        chunky world world_nether
-        chunky shape circle
-        chunky center 0 0
-        chunky radius ${CHUNKY_RADIUS_NETHER:-24000}
-        chunky start
-        chunky world world_the_end
-        chunky shape circle
-        chunky center 0 0
-        chunky radius ${CHUNKY_RADIUS_END:-18000}
-        chunky start
-        chunky quiet 15
-        chunky progress
 
       RCON_CMDS_FIRST_CONNECT: |-
         chunky pause
